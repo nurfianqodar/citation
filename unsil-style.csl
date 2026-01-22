@@ -1471,7 +1471,8 @@
           <if variable="volume">
             <group>
               <text variable="volume" font-style="normal"/>
-              <text variable="issue" prefix="(" suffix=")"/>
+              <text value=":" font-style="normal"/>
+              <text variable="issue"/>
             </group>
           </if>
           <else>
@@ -1482,12 +1483,12 @@
           <if variable="number">
             <!-- Ex. 6: Journal article with article number or eLocator -->
             <group delimiter=" ">
-              <text term="article-locator" text-case="capitalize-first"/>
-              <text variable="number"/>
+              <text term="article-locator" text-case="capitalize-first" font-style="normal"/>
+              <text variable="number" font-style="normal"/>
             </group>
           </if>
           <else>
-            <text variable="page"/>
+            <text variable="page" font-style="normal"/>
           </else>
         </choose>
       </group>
@@ -1496,7 +1497,7 @@
           <choose>
             <if variable="issue number page volume" match="none">
               <!-- We print the status variable directly rather than using in-press, etc. terms. -->
-              <text variable="status" text-case="capitalize-first"/>
+              <text variable="status" text-case="capitalize-first" font-style="normal"/>
             </if>
           </choose>
         </if>
@@ -1509,10 +1510,10 @@
         <group delimiter=" ">
           <choose>
             <if type="song">
-              <text term="on" text-case="capitalize-first"/>
+              <text term="on" text-case="capitalize-first" font-style="normal"/>
             </if>
             <else>
-              <text term="in" text-case="capitalize-first"/>
+              <text term="in" text-case="capitalize-first" font-style="normal"/>
             </else>
           </choose>
           <group delimiter=", ">
@@ -1552,7 +1553,7 @@
               </substitute>
             </names>
             <group delimiter=": " font-style="normal">
-              <text variable="container-title"/>
+              <text variable="container-title" font-style="normal"/>
               <text macro="volume-title" font-style="normal"/>
             </group>
           </group>
@@ -1600,20 +1601,20 @@
                   <text variable="archive_collection" font-style="normal"/>
                   <text variable="archive_location" prefix="(" suffix=")" font-style="normal"/>
                 </group>
-                <text variable="archive"/>
-                <text variable="archive-place"/>
+                <text variable="archive" font-style="normal"/>
+                <text variable="archive-place" font-style="normal"/>
               </if>
               <else>
                 <group delimiter=" ">
-                  <text variable="archive"/>
-                  <text variable="archive_location" prefix="(" suffix=")"/>
+                  <text variable="archive" font-style="normal"/>
+                  <text variable="archive_location" prefix="(" suffix=")" font-style="normal"/>
                 </group>
-                <text variable="archive-place"/>
+                <text variable="archive-place" font-style="normal"/>
               </else>
             </choose>
           </if>
           <else>
-            <text variable="archive"/>
+            <text variable="archive" font-style="normal"/>
           </else>
         </choose>
       </group>
@@ -1622,20 +1623,20 @@
   <macro name="access">
     <choose>
       <if variable="DOI" match="any">
-        <text variable="DOI" prefix="https://doi.org/"/>
+        <text variable="DOI" prefix="https://doi.org/" font-style="normal"/>
       </if>
       <else-if variable="URL">
         <group delimiter=" ">
           <choose>
             <if variable="issued status" match="none">
               <group delimiter=" ">
-                <text term="retrieved" text-case="capitalize-first"/>
+                <text term="retrieved" text-case="capitalize-first" font-style="normal"/>
                 <date variable="accessed" form="text" suffix=","/>
-                <text term="from"/>
+                <text term="from" font-style="normal"/>
               </group>
             </if>
           </choose>
-          <text variable="URL"/>
+          <text variable="URL" font-style="normal"/>
         </group>
       </else-if>
     </choose>
@@ -1652,7 +1653,7 @@
                 <!-- Don't print event info for conference papers published in a proceedings -->
                 <group delimiter=", ">
                   <text macro="event-title" font-style="normal"/>
-                  <text variable="event-place"/>
+                  <text variable="event-place" font-style="normal"/>
                 </group>
               </if>
             </choose>
@@ -1662,7 +1663,7 @@
                  These items aren't given explicit examples in the APA manual, so err on the side of providing too much information. -->
             <group delimiter=", ">
               <text macro="event-title" font-style="normal"/>
-              <text variable="event-place"/>
+              <text variable="event-place" font-style="normal"/>
             </group>
           </else>
         </choose>
@@ -1676,10 +1677,10 @@
            This macro ensures that either "event" or "event-title" can be accpeted.
            Remove if procesor logic and application adoption can handle this. -->
       <if variable="event-title">
-        <text variable="event-title"/>
+        <text variable="event-title" font-style="normal"/>
       </if>
       <else>
-        <text variable="event"/>
+        <text variable="event" font-style="normal"/>
       </else>
     </choose>
   </macro>
@@ -1687,7 +1688,7 @@
   <macro name="publication-history">
     <choose>
       <if type="patent">
-        <text variable="references" prefix="(" suffix=")"/>
+        <text variable="references" prefix="(" suffix=")" font-style="normal"/>
       </if>
       <else>
         <group delimiter="; " prefix="(" suffix=")">
@@ -1696,7 +1697,7 @@
             <if variable="issued">
               <choose>
                 <if variable="issue number page volume" match="any">
-                  <text variable="status" text-case="capitalize-first"/>
+                  <text variable="status" text-case="capitalize-first" font-style="normal"/>
                 </if>
               </choose>
             </if>
@@ -1706,14 +1707,14 @@
               <!-- This provides the option for more elaborate description
                     of publication history, such as full "reprinted" references
                     (examples 11, 43, 44) -->
-              <text variable="references"/>
+              <text variable="references" font-style="normal"/>
             </if>
             <else>
               <group delimiter=" ">
-                <text term="original-work-published" text-case="capitalize-first"/>
+                <text term="original-work-published" text-case="capitalize-first" font-style="normal"/>
                 <choose>
                   <if is-uncertain-date="original-date">
-                    <text term="circa" form="short"/>
+                    <text term="circa" form="short" font-style="normal"/>
                   </if>
                 </choose>
                 <date variable="original-date">
@@ -1771,7 +1772,7 @@
   <macro name="title-legal">
     <choose>
       <if type="bill legal_case legislation regulation treaty" match="any">
-        <text variable="title" text-case="title"/>
+        <text variable="title" text-case="title" font-style="normal"/>
       </if>
       <else-if type="hearing">
         <!-- APA uses a comma delimiter and omits "hearing before the" for hearings with testimony, 
@@ -1779,19 +1780,19 @@
              references to the whole hearing. We simply follow the Bluebook rules for both, but
              use APA style capitalization (not capitalizing "Before" or the title of the hearing). -->
         <group delimiter=": " font-style="normal">
-          <text variable="title" text-case="capitalize-first"/>
+          <text variable="title" text-case="capitalize-first" font-style="normal"/>
           <group delimiter=" ">
             <text term="hearing" form="long" text-case="capitalize-first"/>
             <group delimiter=" ">
               <group delimiter=" ">
                 <!-- APA manual omits the bill number, but it should be included per Bluebook if relevant -->
-                <text term="on"/>
-                <text variable="number"/>
+                <text term="on" font-style="normal"/>
+                <text variable="number" font-style="normal"/>
               </group>
               <group delimiter=" ">
                 <!-- Use the `at` term to hold "before the" -->
-                <text term="at" form="long"/>
-                <text variable="section"/>
+                <text term="at" form="long" font-style="normal"/>
+                <text variable="section" font-style="normal"/>
               </group>
             </group>
           </group>
@@ -1806,7 +1807,7 @@
       </if>
       <else-if type="legal_case">
         <group prefix="(" suffix=")" delimiter=" ">
-          <text variable="authority"/>
+          <text variable="authority" font-style="normal"/>
           <choose>
             <if variable="container-title" match="any">
               <!-- Print only year for cases published in reporters-->
@@ -1826,7 +1827,7 @@
             <date variable="original-date">
               <date-part name="year"/>
             </date>
-            <text term="and" form="symbol"/>
+            <text term="and" form="symbol" font-style="normal"/>
           </group>
           <choose>
             <if variable="issued">
@@ -1853,15 +1854,15 @@
       <if type="treaty">
         <group delimiter=" ">
           <number variable="volume"/>
-          <text variable="container-title"/>
+          <text variable="container-title" font-style="normal"/>
           <choose>
             <if variable="page page-first" match="any">
-              <text variable="page-first"/>
+              <text variable="page-first" font-style="normal"/>
             </if>
             <else>
               <group delimiter=" ">
                 <label variable="number" form="short" text-case="capitalize-first"/>
-                <text variable="number"/>
+                <text variable="number" font-style="normal"/>
               </group>
             </else>
           </choose>
@@ -1872,18 +1873,18 @@
           <choose>
             <if variable="container-title">
               <group delimiter=" ">
-                <text variable="volume"/>
-                <text variable="container-title"/>
+                <text variable="volume" font-style="normal"/>
+                <text variable="container-title" font-style="normal"/>
                 <group delimiter=" ">
                   <label variable="section" form="symbol"/>
-                  <text variable="section"/>
+                  <text variable="section" font-style="normal"/>
                 </group>
                 <choose>
                   <if variable="page page-first" match="any">
-                    <text variable="page-first"/>
+                    <text variable="page-first" font-style="normal"/>
                   </if>
                   <else>
-                    <text value="___"/>
+                    <text value="___" font-style="normal"/>
                   </else>
                 </choose>
               </group>
@@ -1891,7 +1892,7 @@
             <else>
               <group delimiter=" ">
                 <label variable="number" form="short" text-case="capitalize-first"/>
-                <text variable="number"/>
+                <text variable="number" font-style="normal"/>
               </group>
             </else>
           </choose>
@@ -1900,7 +1901,7 @@
       <else-if type="bill">
         <group delimiter=", ">
           <group delimiter=" ">
-            <text variable="genre"/>
+            <text variable="genre" font-style="normal"/>
             <group delimiter=" ">
               <choose>
                 <!-- If there is no session number or code/record title, assume
@@ -1910,26 +1911,26 @@
                   <label variable="number" form="short" text-case="capitalize-first"/>
                 </if>
               </choose>
-              <text variable="number"/>
+              <text variable="number" font-style="normal"/>
             </group>
           </group>
           <group delimiter=" ">
-            <text variable="authority"/>
+            <text variable="authority" font-style="normal"/>
             <!-- 'session' is `chapter-number` -->
-            <text variable="chapter-number"/>
+            <text variable="chapter-number" font-style="normal"/>
           </group>
           <group delimiter=" ">
-            <text variable="volume"/>
-            <text variable="container-title"/>
-            <text variable="page-first"/>
+            <text variable="volume" font-style="normal"/>
+            <text variable="container-title" font-style="normal"/>
+            <text variable="page-first" font-style="normal"/>
           </group>
         </group>
       </else-if>
       <else-if type="hearing">
         <group delimiter=" ">
-          <text variable="authority"/>
+          <text variable="authority" font-style="normal"/>
           <!-- 'session' is `chapter-number` -->
-          <text variable="chapter-number"/>
+          <text variable="chapter-number" font-style="normal"/>
         </group>
       </else-if>
       <else-if type="legislation">
@@ -1937,27 +1938,27 @@
           <if variable="number">
             <!-- There's a public law number. -->
             <group delimiter=", ">
-              <text variable="number" prefix="Pub. L. No. "/>
+              <text variable="number" prefix="Pub. L. No. " font-style="normal"/>
               <group delimiter=" ">
-                <text variable="volume"/>
-                <text variable="container-title"/>
-                <text variable="page-first"/>
+                <text variable="volume" font-style="normal"/>
+                <text variable="container-title" font-style="normal"/>
+                <text variable="page-first" font-style="normal"/>
               </group>
             </group>
           </if>
           <else>
             <group delimiter=" ">
-              <text variable="volume"/>
-              <text variable="container-title"/>
+              <text variable="volume" font-style="normal"/>
+              <text variable="container-title" font-style="normal"/>
               <choose>
                 <if variable="section">
                   <group delimiter=" ">
                     <label variable="section" form="symbol"/>
-                    <text variable="section"/>
+                    <text variable="section" font-style="normal"/>
                   </group>
                 </if>
                 <else>
-                  <text variable="page-first"/>
+                  <text variable="page-first" font-style="normal"/>
                 </else>
               </choose>
             </group>
@@ -1967,24 +1968,24 @@
       <else-if type="regulation">
         <group delimiter=", ">
           <group delimiter=" ">
-            <text variable="genre"/>
+            <text variable="genre" font-style="normal"/>
             <group delimiter=" ">
               <label variable="number" form="short" text-case="capitalize-first"/>
-              <text variable="number"/>
+              <text variable="number" font-style="normal"/>
             </group>
           </group>
           <group delimiter=" ">
-            <text variable="volume"/>
-            <text variable="container-title"/>
+            <text variable="volume" font-style="normal"/>
+            <text variable="container-title" font-style="normal"/>
             <choose>
               <if variable="section">
                 <group delimiter=" ">
                   <label variable="section" form="symbol"/>
-                  <text variable="section"/>
+                  <text variable="section" font-style="normal"/>
                 </group>
               </if>
               <else>
-                <text variable="page-first"/>
+                <text variable="page-first" font-style="normal"/>
               </else>
             </choose>
           </group>
@@ -1997,7 +1998,7 @@
       <if type="hearing">
         <group prefix="(" suffix=")" delimiter=" ">
           <!-- Use the 'verb' form of the hearing term to hold 'testimony of' -->
-          <text term="hearing" form="verb"/>
+          <text term="hearing" form="verb" font-style="normal"/>
           <names variable="author">
             <name and="symbol" delimiter=", "/>
           </names>
@@ -2005,7 +2006,7 @@
       </if>
       <else-if type="bill legislation regulation" match="any">
         <!-- For uncodified regulations, assume future code section is in `status`. -->
-        <text variable="status" prefix="(" suffix=")"/>
+        <text variable="status" prefix="(" suffix=")" font-style="normal"/>
       </else-if>
     </choose>
   </macro>
@@ -2020,10 +2021,10 @@
           <label variable="locator" text-case="capitalize-first"/>
         </else>
       </choose>
-      <text variable="locator"/>
+      <text variable="locator" font-style="normal"/>
     </group>
   </macro>
-  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-year-suffix="true" disambiguate-add-names="true" disambiguate-add-givenname="true" collapse="year" givenname-disambiguation-rule="primary-name-with-initials">
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-year-suffix="true" disambiguate-add-names="false" disambiguate-add-givenname="true" collapse="year" givenname-disambiguation-rule="primary-name-with-initials">
     <sort>
       <key macro="author-sort" names-min="3" names-use-first="1"/>
       <key macro="date-sort-group" sort="ascending"/>
