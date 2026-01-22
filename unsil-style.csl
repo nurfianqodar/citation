@@ -239,7 +239,7 @@
           <if variable="archive container-title DOI publisher URL" match="none">
             <group delimiter=", ">
               <names variable="author">
-                <name and="symbol" delimiter=", " initialize-with=". "/>
+                <name and="text" delimiter=", " initialize-with=". "/>
                 <substitute>
                   <text macro="title-intext" font-style="normal"/>
                 </substitute>
@@ -249,7 +249,7 @@
           </if>
           <else>
             <names variable="author" delimiter=", ">
-              <name form="short" and="symbol" delimiter=", " initialize-with=". "/>
+              <name form="short" and="text" delimiter=", " initialize-with=". "/>
               <substitute>
                 <text macro="title-intext" font-style="normal"/>
               </substitute>
@@ -259,7 +259,7 @@
       </else-if>
       <else>
         <names variable="composer" delimiter=" &amp; ">
-          <name form="short" and="symbol" delimiter=", " initialize-with=". "/>
+          <name form="short" and="text" delimiter=", " initialize-with=". "/>
           <substitute>
             <names variable="author"/>
             <names variable="illustrator"/>
@@ -786,7 +786,7 @@
                   <group delimiter=" ">
                     <text term="container-author" form="verb"/>
                     <names variable="interviewer">
-                      <name and="symbol" initialize-with=". " delimiter=", "/>
+                      <name and="text" initialize-with=". " delimiter=", "/>
                     </names>
                   </group>
                 </group>
@@ -796,7 +796,7 @@
               <group delimiter="; ">
                 <names variable="interviewer">
                   <label form="verb" suffix=" " text-case="capitalize-first"/>
-                  <name and="symbol" initialize-with=". " delimiter=", "/>
+                  <name and="text" initialize-with=". " delimiter=", "/>
                 </names>
                 <text variable="medium" text-case="capitalize-first"/>
               </group>
@@ -839,7 +839,7 @@
                   </choose>
                   <names variable="recipient" delimiter=", ">
                     <label form="verb" suffix=" "/>
-                    <name and="symbol" delimiter=", "/>
+                    <name and="text" delimiter=", "/>
                   </names>
                 </group>
                 <choose>
@@ -870,7 +870,7 @@
                       <group delimiter=" ">
                         <text term="performer" form="verb"/>
                         <names variable="author">
-                          <name and="symbol" initialize-with=". " delimiter=", "/>
+                          <name and="text" initialize-with=". " delimiter=", "/>
                           <substitute>
                             <names variable="performer"/>
                           </substitute>
@@ -882,7 +882,7 @@
                       <group delimiter=" ">
                         <text term="performer" form="verb"/>
                         <names variable="author">
-                          <name and="symbol" initialize-with=". " delimiter=", "/>
+                          <name and="text" initialize-with=". " delimiter=", "/>
                           <substitute>
                             <names variable="performer"/>
                           </substitute>
@@ -892,7 +892,7 @@
                     <else>
                       <text term="performer" form="verb" text-case="capitalize-first"/>
                       <names variable="author">
-                        <name and="symbol" initialize-with=". " delimiter=", "/>
+                        <name and="text" initialize-with=". " delimiter=", "/>
                         <substitute>
                           <names variable="performer"/>
                         </substitute>
@@ -909,7 +909,7 @@
                       <group delimiter=" ">
                         <text term="performer" form="verb"/>
                         <names variable="author">
-                          <name and="symbol" initialize-with=". " delimiter=", "/>
+                          <name and="text" initialize-with=". " delimiter=", "/>
                           <substitute>
                             <names variable="performer"/>
                           </substitute>
@@ -919,7 +919,7 @@
                     <else>
                       <text term="performer" form="verb" text-case="capitalize-first"/>
                       <names variable="author">
-                        <name and="symbol" initialize-with=". " delimiter=", "/>
+                        <name and="text" initialize-with=". " delimiter=", "/>
                         <substitute>
                           <names variable="performer"/>
                         </substitute>
@@ -975,7 +975,7 @@
         <else-if variable="interviewer" type="interview" match="any">
           <names variable="interviewer">
             <label form="verb" suffix=" " text-case="capitalize-first"/>
-            <name and="symbol" initialize-with=". " delimiter=", "/>
+            <name and="text" initialize-with=". " delimiter=", "/>
             <substitute>
               <text macro="format-intext" font-style="normal"/>
             </substitute>
@@ -996,7 +996,7 @@
                 </choose>
                 <names variable="recipient" delimiter=", ">
                   <label form="verb" suffix=" "/>
-                  <name and="symbol" delimiter=", "/>
+                  <name and="text" delimiter=", "/>
                 </names>
               </group>
             </if>
@@ -1064,7 +1064,7 @@
         </group>
         <names variable="reviewed-author">
           <label form="verb-short" suffix=" "/>
-          <name and="symbol" initialize-with=". " delimiter=", "/>
+          <name and="text" initialize-with=". " delimiter=", "/>
         </names>
       </group>
       <choose>
@@ -1125,13 +1125,13 @@
       <choose>
         <if variable="title">
           <names variable="interviewer" delimiter="; ">
-            <name and="symbol" initialize-with=". " delimiter=", "/>
+            <name and="text" initialize-with=". " delimiter=", "/>
             <label form="short" prefix=", " text-case="title"/>
           </names>
         </if>
       </choose>
       <names variable="translator narrator" delimiter="; ">
-        <name and="symbol" initialize-with=". " delimiter=", "/>
+        <name and="text" initialize-with=". " delimiter=", "/>
         <label form="short" prefix=", " text-case="title"/>
       </names>
     </group>
@@ -1141,7 +1141,7 @@
       <choose>
         <if variable="title">
           <names variable="interviewer">
-            <name and="symbol" initialize-with=". " delimiter=", "/>
+            <name and="text" initialize-with=". " delimiter=", "/>
             <label form="short" prefix=", " text-case="title"/>
           </names>
         </if>
@@ -1151,7 +1151,7 @@
           <!-- Webpages treat container-title like publisher -->
           <group delimiter="; ">
             <names variable="illustrator narrator" delimiter="; ">
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
               <label form="short" prefix=", " text-case="title"/>
             </names>
             <choose>
@@ -1159,14 +1159,14 @@
                 <group delimiter="; ">
                   <names variable="container-author">
                     <label form="verb-short" suffix=" " text-case="title"/>
-                    <name and="symbol" initialize-with=". " delimiter=", "/>
+                    <name and="text" initialize-with=". " delimiter=", "/>
                   </names>
                   <names variable="editor translator" delimiter="; ">
-                    <name and="symbol" initialize-with=". " delimiter=", "/>
+                    <name and="text" initialize-with=". " delimiter=", "/>
                     <label form="short" prefix=", " text-case="title"/>
                   </names>
                   <names variable="compiler chair organizer curator series-creator executive-producer" delimiter="; ">
-                    <name and="symbol" initialize-with=". " delimiter=", "/>
+                    <name and="text" initialize-with=". " delimiter=", "/>
                     <label form="long" prefix=", " text-case="title"/>
                   </names>
                 </group>
@@ -1176,7 +1176,7 @@
                   <!-- TODO: Check logic once processors start to automatically populate editor-translator. -->
                   <if variable="editor-translator" match="none">
                     <names variable="translator" delimiter="; ">
-                      <name and="symbol" initialize-with=". " delimiter=", "/>
+                      <name and="text" initialize-with=". " delimiter=", "/>
                       <label form="short" prefix=", " text-case="title"/>
                     </names>
                   </if>
@@ -1189,18 +1189,18 @@
           <group delimiter="; ">
             <names variable="container-author">
               <label form="verb-short" suffix=" " text-case="title"/>
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
             </names>
             <names variable="editor translator" delimiter="; ">
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
               <label form="short" prefix=", " text-case="title"/>
             </names>
             <names variable="illustrator narrator" delimiter="; ">
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
               <label form="short" prefix=", " text-case="title"/>
             </names>
             <names variable="compiler chair organizer curator series-creator executive-producer" delimiter="; ">
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
               <label form="long" prefix=", " text-case="title"/>
             </names>
           </group>
@@ -1518,23 +1518,23 @@
           </choose>
           <group delimiter=", ">
             <names variable="executive-producer">
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="text" initialize-with=". " delimiter=", "/>
               <label form="long" text-case="title" prefix=" (" suffix=")"/>
               <substitute>
                 <names variable="series-creator"/>
                 <names variable="editor-translator">
-                  <name and="symbol" initialize-with=". " delimiter=", "/>
+                  <name and="text" initialize-with=". " delimiter=", "/>
                   <label form="short" text-case="title" prefix=" (" suffix=")"/>
                 </names>
                 <!-- TODO: Translator omitted here on the assumption that editor-translators are uncommon 
                            for chapter citations. If needed, direct entry or automatic population of
                            `editor-translator` can produce combined labels. -->
                 <names variable="editor">
-                  <name and="symbol" initialize-with=". " delimiter=", "/>
+                  <name and="text" initialize-with=". " delimiter=", "/>
                   <label form="short" text-case="title" prefix=" (" suffix=")"/>
                 </names>
                 <names variable="editorial-director">
-                  <name and="symbol" initialize-with=". " delimiter=", "/>
+                  <name and="text" initialize-with=". " delimiter=", "/>
                   <label form="short" text-case="title" prefix=" (" suffix=")"/>
                 </names>
                 <names variable="compiler"/>
@@ -1546,7 +1546,7 @@
                 </choose>
                 <names variable="curator"/>
                 <names variable="collection-editor">
-                  <name and="symbol" initialize-with=". " delimiter=", "/>
+                  <name and="text" initialize-with=". " delimiter=", "/>
                   <label form="short" text-case="title" prefix=" (" suffix=")"/>
                 </names>
                 <names variable="container-author"/>
@@ -2000,7 +2000,7 @@
           <!-- Use the 'verb' form of the hearing term to hold 'testimony of' -->
           <text term="hearing" form="verb" font-style="normal"/>
           <names variable="author">
-            <name and="symbol" delimiter=", "/>
+            <name and="text" delimiter=", "/>
           </names>
         </group>
       </if>
