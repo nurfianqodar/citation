@@ -3,7 +3,6 @@
   <info>
     <title>Unsil Style</title>
     <title-short>US</title-short>
-    <!-- https://raw.githubusercontent.com/nurfianqodar/citation/refs/heads/main/unsil.csl -->
     <id>https://raw.githubusercontent.com/nurfianqodar/citation/refs/heads/main/unsil-style.csl</id>
     <link href="https://raw.githubusercontent.com/nurfianqodar/citation/refs/heads/main/unsil-style.csl" rel="self"/>
     <link href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" rel="documentation"/>
@@ -502,7 +501,7 @@
     <choose>
       <if type="post webpage" match="any">
         <!-- Webpages are always italicized -->
-        <text macro="title-plus-part-title" font-style="italic"/>
+        <text macro="title-plus-part-title" font-style="normal"/>
       </if>
       <!-- Other types are italicized based on presence of container-title.
              Assume that review and review-book are published in periodicals/blogs,
@@ -534,7 +533,7 @@
       </if>
       <else>
         <!-- for periodical items without container titles, don't append volume-title to title -->
-        <text macro="title-plus-part-title" font-style="italic"/>
+        <text macro="title-plus-part-title" font-style="normal"/>
       </else>
     </choose>
   </macro>
@@ -546,7 +545,7 @@
       </if>
       <else>
         <!-- For book-like items without container titles and with volume-title, append volume-title to title (ex. 30) -->
-        <text macro="title-plus-volume-title" font-style="italic"/>
+        <text macro="title-plus-volume-title" font-style="normal"/>
       </else>
     </choose>
   </macro>
@@ -645,11 +644,11 @@
           </if>
           <else-if type="hearing">
             <!-- Hearings are italicized -->
-            <text variable="title" form="short" font-style="italic" text-case="title"/>
+            <text variable="title" form="short" font-style="normal" text-case="title"/>
           </else-if>
           <else-if type="legal_case" match="any">
             <!-- Cases are italicized -->
-            <text variable="title" font-style="italic"/>
+            <text variable="title" font-style="normal"/>
           </else-if>
           <else-if type="legislation regulation treaty" match="any">
             <!-- Legislation, regulations, and treaties not italicized or quoted -->
@@ -657,14 +656,14 @@
           </else-if>
           <else-if type="post webpage" match="any">
             <!-- Webpages are always italicized -->
-            <text variable="title" form="short" font-style="italic" text-case="title"/>
+            <text variable="title" form="short" font-style="normal" text-case="title"/>
           </else-if>
           <else-if variable="container-title" match="any">
             <!-- Other types are italicized or quoted based on presence of container-title. As in title macro. -->
             <text variable="title" form="short" quotes="true" text-case="title"/>
           </else-if>
           <else>
-            <text variable="title" form="short" font-style="italic" text-case="title"/>
+            <text variable="title" form="short" font-style="normal" text-case="title"/>
           </else>
         </choose>
       </else>
@@ -1355,11 +1354,11 @@
         <!-- Not possible to distinguish TV series episode from other reviewed
              works without reviewed-container-title [Ex. 69] -->
         <!-- Adapt for reviewed-container-title if that becomes available -->
-        <text variable="reviewed-title" font-style="italic"/>
+        <text variable="reviewed-title" font-style="normal"/>
       </if>
       <else>
         <!-- Assume title is title of reviewed work -->
-        <text variable="title" font-style="italic"/>
+        <text variable="title" font-style="normal"/>
       </else>
     </choose>
   </macro>
@@ -1369,11 +1368,11 @@
         <!-- Not possible to distinguish TV series episode from other reviewed
              works without reviewed-container-title [Ex. 69] -->
         <!-- Adapt for reviewed-container-title if that becomes available -->
-        <text variable="reviewed-title" form="short" font-style="italic" text-case="title"/>
+        <text variable="reviewed-title" form="short" font-style="normal" text-case="title"/>
       </if>
       <else>
         <!-- Assume title is title of reviewed work -->
-        <text variable="title" form="short" font-style="italic" text-case="title"/>
+        <text variable="title" form="short" font-style="normal" text-case="title"/>
       </else>
     </choose>
   </macro>
@@ -1486,16 +1485,16 @@
   <macro name="container-periodical">
     <group delimiter=". ">
       <group delimiter=", ">
-        <text variable="container-title" font-style="italic" text-case="title"/>
+        <text variable="container-title" font-style="normal" text-case="title"/>
         <choose>
           <if variable="volume">
             <group>
-              <text variable="volume" font-style="italic"/>
+              <text variable="volume" font-style="normal"/>
               <text variable="issue" prefix="(" suffix=")"/>
             </group>
           </if>
           <else>
-            <text variable="issue" font-style="italic"/>
+            <text variable="issue" font-style="normal"/>
           </else>
         </choose>
         <choose>
@@ -1571,7 +1570,7 @@
                 <names variable="container-author"/>
               </substitute>
             </names>
-            <group delimiter=": " font-style="italic">
+            <group delimiter=": " font-style="normal">
               <text variable="container-title"/>
               <text macro="volume-title"/>
             </group>
@@ -1805,7 +1804,7 @@
              but follows Bluebook rules (colon delimiter, prefix before the committee name) for
              references to the whole hearing. We simply follow the Bluebook rules for both, but
              use APA style capitalization (not capitalizing "Before" or the title of the hearing). -->
-        <group delimiter=": " font-style="italic">
+        <group delimiter=": " font-style="normal">
           <text variable="title" text-case="capitalize-first"/>
           <group delimiter=" ">
             <text term="hearing" form="long" text-case="capitalize-first"/>
